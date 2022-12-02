@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일과 매핑되어 실행될 자바 매퍼 파일 정보 -->
+<mapper namespace="com.home.mapper.HomeMapper">
+
+	<select id="search" parameterType="map" resultType="Home">
+		select i.aptCode, i.dongCode, i.lat, i.lng,
+				d.dealAmount, d.dealYear, d.dealMonth, d.dealDay, d.area, d.floor
+		from homeinfo i join homedeal d on i.aptCode = d.aptCode
+		<where>
+			i.dongCode = #{dongCode}
+			<choose>
+				<when test="dealYear != null and dealMonth == null">
+					and d.dealYear = #{dealYear}
+				</when>
+				<when test="dealYear != null and dealMonth != null">
+					and d.dealYear = #{dealYear}
+					and d.dealMonth = #{dealMonth}
+				</when>
+			</choose>
+		</where>
+		order by dealYear desc, dealMonth desc
+	</select>
+	
+	<select id="searchByApartmentName" resultType="Home">
+		select i.aptCode, i.dongCode, i.lat, i.lng,
+				d.dealAmount, d.dealYear, d.dealMonth, d.dealDay, d.area, d.floor
+		from homeinfo i join homedeal d on i.aptCode = d.aptCode
+		<where>
+			i.apartmentName like concat('%', #{apartmentName}, '%')
+		</where>
+		order by dealYear desc, dealMonth desc
+	</select>
+	
+	<select id="findNames" resultType="map">
+		select sidoName, gugunName, dongName
+		from dongcode
+		where dongCode = #{dongCode}
+	</select>
+	
+	<select id="findApartmentName" resultType="string">
+		select apartmentName
+		from homeinfo
+		where aptCode = #{aptCode}
+	</select>
+	
+	<select id="getSidoList" resultType="string">
+		select distinct sidoName
+		from dongcode
+	</select>
+	
+	<select id="getGugunList" resultType="string">
+		select distinct gugunName
+		from dongcode
+		where sidoName = #{sidoName}
+	</select>
+	
+	<select id="getDongList" resultType="string">
+		select distinct dongName
+		from dongcode
+		where sidoName = #{sidoName} and gugunName = #{gugunName}
+	</select>
+	
+</mapper>

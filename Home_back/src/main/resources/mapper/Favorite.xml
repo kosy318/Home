@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일과 매핑되어 실행될 자바 매퍼 파일 정보 -->
+<mapper namespace="com.favorite.mapper.FavoriteMapper">
+
+  <select id="selectAll" parameterType="Favorite"
+    resultType="Favorite">
+    select f.num, f.id, f.dongCode, d.sidoName, d.gugunName, d.dongName
+    from homefavorite f join dongcode d
+    on f.dongCode=d.dongCode
+    where id = #{id}
+  </select>
+
+  <insert id="insertFavorite" parameterType="Favorite">
+    insert into homefavorite
+    values(null, #{id}, #{dongCode})
+  </insert>
+
+  <delete id="deleteFavorite" parameterType="map">
+    delete from homefavorite
+    where dongCode = #{dongCode}
+    and id = #{id}
+  </delete>
+
+</mapper>

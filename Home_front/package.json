@@ -1,0 +1,70 @@
+{
+  "name": "home-vue",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port 80",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/vue-fontawesome": "^2.0.9",
+    "async": "^3.2.4",
+    "axios": "^1.1.3",
+    "bootstrap": "^4.2.1",
+    "bootstrap-vue": "^2.23.1",
+    "cheerio": "^1.0.0-rc.12",
+    "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "i": "^0.3.7",
+    "jquery": "^3.5.1",
+    "jwt-decode": "^3.1.2",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "summernote": "^0.8.20",
+    "tiptap-extensions": "^1.35.2",
+    "vue": "^2.6.14",
+    "vue-editor": "^0.0.0",
+    "vue-router": "^3.5.1",
+    "vue-simple-range-slider": "^1.0.0",
+    "vue2-editor": "^2.10.3",
+    "vuejs-overlay": "^0.0.28",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

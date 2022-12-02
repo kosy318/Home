@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일과 매핑되어 실행될 자바 매퍼 파일 정보 -->
+<mapper namespace="com.notice.mapper.NoticeMapper">
+
+	<select id="selectAll" resultType="Notice">
+		select num, title, regdate, count
+		from notices
+		order by num desc
+	</select>
+	
+	<select id="selectThree" resultType="Notice">
+		select num, title, regdate
+		from notices
+		order by num desc limit 3
+	</select>
+	
+	<select id="readNotice" resultType="Notice">
+		select *
+		from notices
+		where num = #{num}
+	</select>
+	
+	<select id="searchNotice" resultType="Notice">
+		select num, title, regdate, count
+		from notices
+		where title like concat('%', #{title}, '%')
+	</select>
+	
+	<insert id="writeNotice" parameterType="Notice">
+		insert into notices(title, content, regdate, count)
+		values(#{title}, #{content}, sysdate(), 0)
+	</insert>
+	
+	<delete id="deleteNotice">
+		delete from notices
+		where num = #{num}
+	</delete>
+	
+	<update id="modifyNotice" parameterType="Notice" >
+		update notices
+		set content=#{content}, title=#{title}
+		where num=#{num}
+	</update>
+
+	<update id="countUp">
+		update notices
+		set count = count+1
+		where num=#{num}
+	</update>
+	
+</mapper>

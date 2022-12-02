@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일과 매핑되어 실행될 자바 매퍼 파일 정보 -->
+<mapper namespace="com.qna.mapper.QnaMapper">
+
+	<select id="selectAll" resultType="Qna">
+		select *
+		from qna
+		order by num
+		desc
+	</select>
+
+	<select id="readQna" resultType="Qna">
+		select *
+		from qna
+		where num =
+		#{num}
+	</select>
+
+	<select id="searchQna" resultType="Qna">
+		select *
+		from qna
+		where title
+		like concat('%', #{title}, '%')
+	</select>
+
+	<select id="searchMyQna" resultType="Qna">
+		select *
+		from qna
+		where id =
+		#{id}
+	</select>
+
+	<select id="searchUnchecked" resultType="Qna">
+		select * from qna
+		where
+		checked = 'N' and id = #{id} and answer is not null;
+	</select>
+
+	<update id="checkQna">
+		update qna
+		set
+		checked='Y'
+		where num=#{num} and answer is not null;
+	</update>
+
+	<insert id="writeQna" parameterType="Qna">
+		insert into qna
+        values (null, #{id}, #{secret}, #{title}, #{content}, null, sysdate(), 0, #{email}, 'N')
+	</insert>
+
+	<delete id="deleteQna">
+		delete from qna
+		where num = #{num}
+	</delete>
+
+	<update id="modifyQna" parameterType="Qna">
+		update qna
+		set
+		content=#{content}, title=#{title}
+		where num=#{num}
+	</update>
+
+	<update id="modifyAnswerQna" parameterType="Qna">
+		update qna
+		set
+		answer=#{answer}
+		where num=#{num}
+	</update>
+
+	<update id="answerQna" parameterType="Qna">
+		update qna
+		set
+		answer=#{answer}
+		where num=#{num}
+	</update>
+
+	<update id="countUp">
+		update qna
+		set count = count+1
+		where num=#{num}
+	</update>
+
+</mapper>

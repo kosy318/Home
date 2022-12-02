@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일과 매핑되어 실행될 자바 매퍼 파일 정보 -->
+<mapper namespace="com.favorite.mapper.FavoriteMapper">
+
+	<select id="selectAll" resultType="string">
+		select dongCode
+		from homefavorite
+		order by num desc
+	</select>
+	
+	<insert id="insertFavorite" parameterType="map">
+		insert into homefavorite(userId, dongCode)
+		values(#{userId}, #{dongCode})
+	</insert>
+	
+	<delete id="deleteFavorite">
+		delete from homefavorite
+		where num = #{num}
+	</delete>
+
+</mapper>
