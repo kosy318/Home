@@ -14,7 +14,10 @@
 ## Description
 ### about this site
 <a href="https://mousy-background-ed8.notion.site/Where-is-my-house-Project-020b2246e1794b8e840afdc216acc184">notion Page</a><br>
-<a href="https://drive.google.com/file/d/1Ht9MScZpQi08kRhZwTYsNw4pKPZAKC5Y/view?usp=sharing">How to use this site(video)</a>
+
+### video for explanation
+
+https://user-images.githubusercontent.com/77595685/230025681-4ce5e715-82d8-4e44-9e12-35e8291d14e6.mov
 
 챗봇을 사용할 수 있으며 Navigation bar의 종 아이콘을 통해 QnA에 답이 달렸는지 쉽게 확인할 수 있습니다.
 ### main page
